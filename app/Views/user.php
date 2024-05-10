@@ -41,8 +41,8 @@
     
     <h2 class="mt-5">Table QR Codes</h2>
     <a class="btn btn-primary mb-3" href="<?= base_url('user/tableqr' . '?numTable=' . $restaurant['number_of_tables']) ?>">Edit Table QR codes</a>
-    <!-- QR Code Generation Interface -->
-    <p>Total Number of Tables: <span id="totalTables">10</span></p>
+    <!-- QR Code Generation For number of tabls in restaurant -->
+    <p>Total Number of Tables: <span id="totalTables"><?= $restaurant['number_of_tables'] ?></span></p>
     <div id="qrCodes" class="d-flex flex-wrap">
         <!-- QR Codes will be automatically generated for each table -->
     </div>

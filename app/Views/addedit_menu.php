@@ -7,23 +7,24 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6">
-                    <h2 class="text-center mb-4">Add/Edit Restaurant</h2>
-                    <form action="<?= base_url('admin/addedit' . (isset($restaurant) ? '/' . $restaurant['restaurant_id'] : '')) ?>" method="post">
+                    <h2 class="text-center mb-4">Add/Edit Menu</h2>
+                    <form action="<?= base_url('user/addedit' . (isset($restaurant) ? '/' . $restaurant['restaurant_id'] : '')) ?>" method="post">
+                        <!--Add edit category name, item name, item description not required, item price  -->
                         <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" value="<?= isset($restaurant) ? $restaurant['name'] : '' ?>" required>
+                            <label for="category_name" class="form-label text-capitalize">Category Name</label>
+                            <input type="text" class="form-control" id="category_name" name="category_name" value="<?= isset($restaurant) ? $restaurant['category_name'] : '' ?>" required>
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" value="<?= isset($restaurant) ? $restaurant['email'] : '' ?>" required>
+                            <label for="item_name" class="form-label text-capitalize">Item Name</label>
+                            <input type="text" class="form-control" id="item_name" name="item_name" value="<?= isset($restaurant) ? $restaurant['item_name'] : '' ?>" required>
                         </div>
                         <div class="mb-3">
-                            <label for="phone" class="form-label">Phone</label>
-                            <input type="text" class="form-control" id="phone" name="phone" value="<?= isset($restaurant) ? $restaurant['phone'] : '' ?>" required>
+                            <label for="item_description" class="form-label text-capitalize">Item Description</label>
+                            <input type="text" class="form-control" id="item_description" name="item_description" value="<?= isset($restaurant) ? $restaurant['item_description'] : '' ?>" required>
                         </div>
                         <div class="mb-3">
-                            <label for="number_of_tables" class="form-label">Number of tables</label>
-                            <input type="number" class="form-control" id="number_of_tables" name="number_of_tables" value="<?= isset($restaurant) ? $restaurant['number_of_tables'] : '' ?>" required>
+                            <label for="item_price" class="form-label text-capitalize">Item Price</label>
+                            <input type="number" class="form-control" id="item_price" name="item_price" value="<?= isset($restaurant) ? $restaurant['item_price'] : '' ?>" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>

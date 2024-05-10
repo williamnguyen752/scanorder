@@ -28,6 +28,7 @@ $routes->group('/user', function($routes) {
     $routes->get('tableqr', 'StaffController::tableqr');
     $routes->get('/', 'StaffController::user');
     $routes->match(['get', 'post'], 'addedit', 'StaffController::addedit');
+    $routes->match(['get', 'post'], 'addedit/(:num)', 'StaffController::addedit/$1');
 });
 
 $routes->get('/order', 'MenuController::order');

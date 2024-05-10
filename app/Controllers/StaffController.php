@@ -50,38 +50,37 @@ class StaffController extends BaseController
         if ($this->request->getMethod() === 'POST') {
             $postData = $this->request->getPost();
 
-            $restaurantData = [
-                'name' => $postData['name'],
-                'email' => $postData['email'],
-                'phone' => $postData['phone'],
-                'password_hash' => password_hash('1', PASSWORD_DEFAULT),
-                'number_of_tables' => $postData['number_of_tables'],
+            // Edit menu items
+            $categoryData = [
+                'restaurant_id' => $this->session->get('id'),
+                'name' => $postData['category_name'],
+            ];
+            $itemData = [
+                'category_id' => $postData['category_id'],
+                'name' => $postData['item_name'],
+                'description' => $postData['item_description'],
+                'price' => $postData['item_price'],
             ];
 
+            // if restaurant_id is not set, use current restaurant id to update menu items
             if ($id === null) {
+                $categoryData['restaurant_id'] = $this->session->get('id');
+                $itemData['category_id'] = $postData['category_id'];
                 // Add
-                if ($this->restaurantModel->insert($restaurantData)) {
-                    $this->session->setFlashData('success', 'Restaurant added');
+                if ($this->categoryModel->insert($categoryData)) {
+                    $this->session->setFlashData('success', 'Category added');
                 }
                 else {
-                    $this->session->setFlashData('error', 'Fail to add restaurant');
-                }
-            } else {
-                // Edit
-                if ($this->restaurantModel->update($id, $restaurantData)) {
-                    $this->session->setFlashData('success', 'Restaurant updated');
-                }
-                else {
-                    $this->session->setFlashData('error', 'Fail to update restaurant');
+                    $this->session->setFlashData('error', 'Fail to add category');
                 }
             }
 
-            return redirect()->to('/admin');
+            
         }
 
         // GET
         $data['restaurant'] = ($id === null) ? null : $this->restaurantModel->find($id);
 
-        return view('addedit_restaurant', $data);
+        return view('addedit_menu', $data);
     }
 }
