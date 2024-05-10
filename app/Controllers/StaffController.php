@@ -62,16 +62,22 @@ class StaffController extends BaseController
                 'price' => $postData['item_price'],
             ];
 
-            // if restaurant_id is not set, use current restaurant id to update menu items
-            if ($id === null) {
-                $categoryData['restaurant_id'] = $this->session->get('id');
-                $itemData['category_id'] = $postData['category_id'];
-                // Add
-                if ($this->categoryModel->insert($categoryData)) {
-                    $this->session->setFlashData('success', 'Category added');
+            // if item id is set
+            if (isset($postData['item_id'])) {
+                $item_id = $postData['item_id'];
+                if ($this->menuItemModel->update($item_id, $itemData)) {
+                    $this->session->setFlashData('success', 'Menu item updated');
                 }
                 else {
-                    $this->session->setFlashData('error', 'Fail to add category');
+                    $this->session->setFlashData('error', 'Fail to update menu item');
+                }
+            } else {
+                // Add
+                if ($this->menuItemModel->insert($itemData)) {
+                    $this->session->setFlashData('success', 'Menu item added');
+                }
+                else {
+                    $this->session->setFlashData('error', 'Fail to add menu item');
                 }
             }
 

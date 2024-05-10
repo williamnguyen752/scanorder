@@ -31,7 +31,7 @@
                         <td>$<?= $item['price'] ?></td>
                         <td>
                             <!-- <button class="btn btn-sm btn-primary me-2 mb-1"><i class="bi bi-eye-fill"></i></button> -->
-                            <a class="btn btn-sm btn-info me-2 mb-1" href="<?= base_url('user/addedit/' . $restaurant['restaurant_id']) ?>"><i class="bi bi-pencil-fill"></i></a>
+                            <a class="btn btn-sm btn-info me-2 mb-1" href="<?= base_url('user/addedit/' . $item['item_id']) ?>"><i class="bi bi-pencil-fill"></i></a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
