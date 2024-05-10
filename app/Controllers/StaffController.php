@@ -87,6 +87,6 @@ class StaffController extends BaseController
         // GET
         $data['restaurant'] = ($id === null) ? null : $this->restaurantModel->find($id);
 
-        return view('addedit_menu', $data);
+        return view('addedit_item', $data);
     }
 }

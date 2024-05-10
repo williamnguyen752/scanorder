@@ -12,12 +12,7 @@
                         <!--Add edit item form-->
                         <div class="mb-3">
                             <label for="category_id" class="form-label mb-2">Category</label>
-                            <select class="form-select" id="category_id" name="category_id" required>
-                                <option value="">Select Category</option>
-                                <?php foreach($categories as $category) : ?>
-                                    <option value="<?= $category['category_id'] ?>" <?= isset($item) && $item['category_id'] == $category['category_id'] ? 'selected' : '' ?>><?= $category['name'] ?></option>
-                                <?php endforeach; ?>
-                            </select>
+                            <textare class = "form-control" id="category_id" name="category_id" rows="3"><?= isset($item) ? $item['category_id'] : '' ?></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
